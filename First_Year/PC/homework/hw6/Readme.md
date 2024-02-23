@@ -1,4 +1,4 @@
-### Implementați următoarele funcții într-un singur fișier sursă. Apelați și testați funcțiile în main. Fiecare funcție este responsabilă de tratarea erorilor cum ar fi parametri greșiți sau alocare imposibilă. La finalul programului să dezalocați toate zonele create.
+### 💻 Implementați următoarele funcții într-un singur fișier sursă. Apelați și testați funcțiile în main. Fiecare funcție este responsabilă de tratarea erorilor cum ar fi parametri greșiți sau alocare imposibilă. La finalul programului să dezalocați toate zonele create.
 
 ### a) O funcție create care crează și returnează o matrice de n rânduri și m coloane de numere întregi aleatoare din intervalul [L, R] utilizând funcția rand din stdlib. 
 Constrângeri: 0 < n, m <= 100, -1000 <= L <= R <= 1000.
