@@ -1,9 +1,9 @@
-### Studiați cum arată o tablă de șah și pozițiile inițiale ale pieselor.
+### 💻 Studiați cum arată o tablă de șah și pozițiile inițiale ale pieselor.
 
 Implementați următoarele funcții în fișierele sah.h și sah.c. Testați-le în main.c.
 Vor fi teme ulterioare în care va trebui să continuați această implementare.
 
-### 1. O funcție care primește o matrice de 8x8 caractere și o modifică să reprezinte tabla în configurația initială. Vom utiliza următoarea convenție: 
+### 💻 1. O funcție care primește o matrice de 8x8 caractere și o modifică să reprezinte tabla în configurația initială. Vom utiliza următoarea convenție: 
 Rândul 0 din matrice corespunde rândului 8 al tablei;
 Coloana 0 din matrice corespunde coloanei a a tablei;
 Piesele albe se reprezintă cu majuscule;
@@ -14,13 +14,13 @@ rege = k, damă = q, turn = r, nebun = b, cal = n, pion = p
 
     void init(char table[][8])
 
-### 2. O funcție care afișează tabla, cu următorul antet:
+### 💻 2. O funcție care afișează tabla, cu următorul antet:
 
     void print(char table[][8])
 
 Se afișează cu rândul 8 al tablei sus, exact cum apare în imaginile din linkul de mai sus.
 
-### 3. O funcție cu următorul antet:
+### 💻 3. O funcție cu următorul antet:
 
 int find(char table[][8], char piece, char cols[], int rows[])
 
