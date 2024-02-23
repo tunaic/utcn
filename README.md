@@ -5,7 +5,7 @@
 ### &nbsp; 📊 [Analiza matematica I](/First_Year/AM-I/)
 ### &nbsp; 💻 [Programarea Calculatoarelor](/PC/)
 ### &nbsp; 🧠 [Proiectare Logica](/PL/)
-### &nbsp; 🔢 [Matematici Speciale](/MS/)
+### &nbsp; 🔢 [Matematici Speciale](/First_Year/MS/)
 ### &nbsp;    [Fizica](/First_Year/FIZ/)
 
 
