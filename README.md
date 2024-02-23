@@ -6,7 +6,7 @@
 ### &nbsp; 💻 [Programarea Calculatoarelor](/First_Year/PC/)
 ### &nbsp; 🧠 [Proiectare Logica](/First_Year/PL/)
 ### &nbsp; 🔢 [Matematici Speciale](/First_Year/MS/)
-### &nbsp;    [Fizica](/First_Year/FIZ/)
+### &nbsp; 📚 [Fizica](/First_Year/FIZ/)
 
 
 
