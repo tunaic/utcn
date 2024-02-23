@@ -1,4 +1,4 @@
-### 1. Implementați și testați următoarele funcții în main, toate într-un singur program.
+### 💻 1. Implementați și testați următoarele funcții în main, toate într-un singur program.
 
 a) O funcție care primește la intrare un șir de numere a și lungimea lui și care construiește masca binară (numărul întreg) care are biți activi doar în pozițiile care apar în șir ca elemente. Constrângeri: 0 <= lungime < 40, 0 <= a[i] < 32.
 
