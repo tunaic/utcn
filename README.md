@@ -1,4 +1,4 @@
-# uni-computer-science
+# uni-computer-science(CTI B)
 
 # :closed_book: [First Year](/First_Year/) 
 #### &nbsp; 📏 [Algebra liniara si geometrie analitica](/First_Year/ALGA/)
