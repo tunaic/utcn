@@ -14,9 +14,9 @@ typedef struct {
 
 DL_LIST* create_double_linked_list() {
     DL_LIST* list = (DL_LIST*)malloc(sizeof(DL_LIST));
-    if (!list) {
+    if(!list)
         return NULL;
-    }
+
     list->first = NULL;
     list->last = NULL;
     return list;
@@ -38,6 +38,7 @@ void dll_print_forward(const DL_LIST* list) {
     if (!list || !list->first) {
         return;
     }
+
     DLL_NODE* curr = list->first;
     while (curr) {
         printf("%d ", curr->key);
@@ -138,15 +139,15 @@ void dll_delete_first(DL_LIST* list) {
 }
 
 void dll_delete_last(DL_LIST* list) {
-    if (!list->last)
+    if (!list->first)
         return;
 
     DLL_NODE* curr = list->last;
     list->last = curr->prev;
-    if (list->last)
+    if (list->first)
         list->last->next = NULL;
     else
-        list->first = NULL;
+        list->last = NULL;
     free(curr);
 }
 
@@ -197,9 +198,18 @@ int main() {
         printf("Not found!\n");
 
     dll_delete_first(list);
+    dll_print_forward(list);
+
+    dll_delete_first(list);
     dll_delete_last(list);
+    dll_print_forward(list);
+
     dll_delete_key(list, 4);
+    dll_print_backward(list);
+
     dll_delete_key(list, 15);
+    dll_print_backward(list);
+
 
     dll_print_forward(list);
     dll_print_backward(list);

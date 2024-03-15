@@ -34,6 +34,12 @@ void destroy_queue(QUEUE* queue) {
 }
 
 void enqueue(QUEUE* Q, int key) {
+
+    if (!Q)
+        return;
+    if (!Q->array)
+        return;
+
     if (Q->size == Q->capacity) {
         return;
     }
@@ -43,9 +49,12 @@ void enqueue(QUEUE* Q, int key) {
 }
 
 int dequeue(QUEUE* Q) {
-    if (Q->size == 0) {
-        return -1;
+    if (!Q) {
+        return;
     }
+    if (Q->size == 0)
+        return -1;
+
     int val = Q->array[Q->head];
     Q->head = (Q->head + 1) % Q->capacity;
     Q->size--;
@@ -56,7 +65,7 @@ void print(const QUEUE* Q) {
     if (!Q) {
         return;
     }
-    if (Q->size == 0) {
+    if (Q->array == 0) {
         return;
     }
     for (int i = 0; i < Q->size; i++) {

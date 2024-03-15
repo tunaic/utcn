@@ -4,7 +4,7 @@
 #define size 100
 
 void push(int *stack, int *top, int key) {
-	if (*top == size - 1)
+	if (*top == size)
 		return;
 	(*top)++;
 	stack[*top] = key;
