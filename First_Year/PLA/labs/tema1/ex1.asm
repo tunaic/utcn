@@ -1,74 +1,42 @@
 .386
 .model flat, stdcall
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; includem msvcrt.lib, și declaram ce funcții vrem sa importam
 includelib msvcrt.lib
 extern exit: proc
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; declaram simbolul start ca public - de acolo incepe executia
 public start
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; sectiunile programului, date, respectiv cod
 .data
-    b dd 19
-    z dd 20
-
 .code
 start:
-    mov eax, 0              ; Initializeaza EAX cu 0
-    mov ebx, 9              ; Incarca 9 in EBX (valoarea lui EBX)
-    mov edx, 16             ; Incarca 16 in EDX (valoarea lui EDX)
-    mov esi, 13             ; Incarca 13 in ESI (valoarea lui ESI)
+    ; initializez registrele
+    mov cl, 16   
+    mov dh, 11   
 
-    ; Impartim EBX la 5
-    mov ecx, 5              ; Incarca 5 in ECX (divizorul)
-    div ecx                 ; Impartim EAX (rezultatul) la ECX
-    mov ebx, eax            ; Salvam rezultatul in EBX
-    mov eax, 0              ; Resetam EAX
+    ; Facem 12 - DH
+    mov al, 12   ; Încărcăm 12 în AL
+    sub al, dh   ; Scădem valoarea din DH din AL
+    mov bl, al   ; Salvăm rezultatul în BL 
 
-    ; Inmultim rezultatul cu b
-    mov eax, ebx            ; Incarcam valoarea salvata anterior in EAX
-    imul eax, b             ; Inmultim EAX cu b
-    mov ebx, eax            ; Salvam rezultatul in EBX
-    mov eax, 0              ; Resetam EAX
+    ; Facem 10 / CL
+    mov al, 10   ; Încărcăm 10 în AL
+    mov ah, 0   ; Setăm registrul EAX la zero pentru a face impartirea
+    div cl       ; Facem împărțirea: 10 / CL
+    mov cl, al   ; Salvăm rezultatul în CL
 
-    ; Impartim rezultatul la 6
-    mov ecx, 6              ; Incarca 6 in ECX (divizorul)
-    div ecx                 ; Impartim EAX (rezultatul) la ECX
-    mov ebx, eax            ; Salvam rezultatul in EBX
-    mov eax, 0              ; Resetam EAX
+    ; Adunăm rezultatul împărțirii la valoarea anterioară
+    mov al, bl   ; Restaurăm rezultatul inițial al lui 12 - DH
+    add al, cl   ; Adăugăm valoarea rezultatului împărțirii
 
-    ; Inmultim EDX cu 15
-    mov eax, edx            ; Salveaza EDX intr-un registru auxiliar
-    mov edx, 0              ; Resetam EDX pentru a efectua corect inmultirea
-    mov ecx, 15             ; Incarca 15 in ECX (multiplii)
-    mul ecx                 ; Inmulteste EAX cu 15 (rezultatul in EAX)
-    mov edx, eax            ; Salvam rezultatul in EDX
-    mov eax, 0              ; Resetam EAX
-
-    ; Calculam z - ESI
-    mov eax, edx            ; Incarcam valoarea salvata anterior in EAX
-    sub eax, esi            ; Scadem ESI din EAX
-    mov ebx, eax            ; Salvam rezultatul in EBX
-    mov eax, 0              ; Resetam EAX
-
-    ; Impartim rezultatul anterior la z - ESI
-    mov eax, edx            ; Incarcam valoarea salvata anterior in EAX
-    div ebx                 ; Impartim EAX la valoarea din EBX
-    mov edx, eax            ; Salvam rezultatul in EDX
-    mov eax, 0              ; Resetam EAX
-
-    ; Impartim rezultatul partial la rezultatul calculat anterior
-    mov eax, ebx            ; Incarcam valoarea salvata anterior in EAX
-    div ebx                 ; Impartim EAX la valoarea din EBX
-    mov ebx, eax            ; Salvam rezultatul in EBX
-    mov eax, 0              ; Resetam EAX
-
-    ; Adunam rezultatele
-    add eax, ebx            ; Aduna EAX cu EBX
+    ; Rezultatul corect este în AL
 
     ; Iesire
     push 0
     call exit
-
 end start

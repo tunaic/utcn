@@ -28,7 +28,6 @@ void enqueue(GARAGE* Q, int truck_id) {
 	}
 }
 
-
 int dequeue(GARAGE* Q) {
 	if (Q->first == NULL)
 		return;
@@ -40,6 +39,7 @@ int dequeue(GARAGE* Q) {
 	free(tmp);
 	return truck_id;
 }
+
 void afiseaza_camioane(GARAGE* Q, const char *loc) {
 	if (Q->first == NULL)
 	{

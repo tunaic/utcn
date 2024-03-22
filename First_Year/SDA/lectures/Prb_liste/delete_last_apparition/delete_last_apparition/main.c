@@ -24,8 +24,7 @@ void deleteLast(SL_LIST* list, int x) {
     if (list->last != NULL) {
         if (list->last == list->first) { 
             free(list->last);
-            list->first = NULL;
-            list->last = NULL;
+            list->first = list->last = NULL;
         }
         else {
             SLL_NODE* tmp = list->last->next;

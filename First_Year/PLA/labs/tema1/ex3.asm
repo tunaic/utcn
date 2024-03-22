@@ -1,7 +1,6 @@
 .386
 .model flat, stdcall
 
-; includem msvcrt.lib, și declaram ce funcții vrem sa importam
 includelib msvcrt.lib
 extern exit: proc
 
@@ -10,50 +9,46 @@ public start
 
 ; sectiunile programului, date, respectiv cod
 .data
-    b dd 19
-    z dd 20
-
+b dd 0
+z dd 0
 .code
 start:
-    mov eax, 0              ; Initializeaza EAX cu 0
-    mov ebx, 9              ; Incarca 9 in EBX (valoarea lui EBX)
-    mov edx, 16             ; Incarca 16 in EDX (valoarea lui EDX)
-    mov esi, 13             ; Incarca 13 in ESI (valoarea lui ESI)
+    ; Incarcam valorile pentru variabilele b si z
+    mov ebx, 9
+    mov edx, 16  
+    mov esi, 13
+    mov b, 19
+    mov z, 20
 
-    ; Impartim EBX la 5
-    mov ecx, 5              ; Incarca 5 in ECX (divizorul)
-    div ecx                 ; Impartim EAX (rezultatul) la ECX
+    mov eax, ebx  ; Salveaza EBX in EAX pentru a face impartirea
+    mov ecx, 5    ; ECX = 5 
+    mov edx, 0    ; Resetam EDX la zero
+    div ecx       ; EAX = EBX / 5
+    mov ebx, eax  ; Rezultatul este salvat in EBX
 
-    ; Salvam rezultatul in EBX
-    mov ebx, eax
+    mov eax, b    ; Salveaza b in EAX pentru a face impartirea
+    mov ecx, 6    ; ECX = 6 
+    mov edx, 0    ; Resetam EDX la zero
+    div ecx       ; EAX = b / 6
+	mov ebp, eax
 
-    ; Inmultim rezultatul cu b
-    imul ebx, b             ; Inmulteste EAX (rezultatul) cu b
+    mov eax, edx  ; Salveaza EDX in EAX pentru a face impartirea
+    mov ecx, z    ; Incarcam z in ECX
+    mov edx, 0    ; Resetam EDX la zero
+    div ecx       ; EAX = EDX / z
+    mov edx, eax  ; Rezultatul este salvat in EDX
 
-    ; Impartim rezultatul la 6
-    mov ecx, 6              ; Incarca 6 in ECX (divizorul)
-    div ecx                 ; Impartim EAX (rezultatul) la ECX
+    mov eax, z    ; Incarcam z in EAX
+    sub eax, esi  ; Scadem ESI din z
+    mov ecx, 15   ; Incarcam 15 in ECX
+    mov edx, 0    ; Resetam EDX la zero
+    div ecx       ; EAX = 15 / (z - ESI)
 
-    ; Salvam rezultatul partial in EAX
+    imul edx, eax 
+    add ebx, edx   
+
+    ; Salvez rezultatul final in EAX
     mov eax, ebx
-
-    ; Inmultim EDX cu 15
-    mov ebx, edx            ; Salveaza EDX intr-un registru auxiliar
-    mov edx, 0              ; Resetam EDX pentru a efectua corect inmultirea
-    mov ecx, 15             ; Incarca 15 in ECX (multiplii)
-    mul ecx                 ; Inmulteste EAX cu 15 (rezultatul in EAX)
-
-    ; Calculam z - ESI
-    sub ebx, esi            ; Scade ESI din valoarea salvata anterior in EBX
-
-    ; Impartim rezultatul anterior la z - ESI
-    div ebx                 ; Impartim EAX la valoarea din EBX
-
-    ; Impartim rezultatul partial la rezultatul calculat anterior
-    div ebx                 ; Impartim EAX la valoarea din EBX
-
-    ; Adunam rezultatele
-    add eax, ebx            ; Aduna EAX cu EBX
 
     ; Iesire
     push 0

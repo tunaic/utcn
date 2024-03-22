@@ -22,6 +22,7 @@ STACK *create_stack() {
 void destroy_stack(STACK *stack) {
     if (stack == NULL)
         return;
+
     while (stack->top != NULL) {
         STACK_NODE* tmp = stack->top;
         stack->top = stack->top->next;

@@ -40,9 +40,9 @@ void print(SL_LIST* list) {
 }
 
 void unique_replace(SL_LIST* list, int repl) {
-    SLL_NODE* p = list->first;
-    while (p != NULL) {
-        int val = p->key;
+    SLL_NODE* curr = list->first;
+    while (curr != NULL) {
+        int val = curr->key;
         int cnt = 0;
         SLL_NODE* q = list->first;
         while (q != NULL) {
@@ -54,8 +54,8 @@ void unique_replace(SL_LIST* list, int repl) {
             q = q->next;
         }
         if (cnt == 1)
-            p->key = repl;
-        p = p->next;
+            curr->key = repl;
+        curr = curr->next;
     }
 }
 
